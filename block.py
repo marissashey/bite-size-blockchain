@@ -15,7 +15,8 @@ class Block:
 
     def hash_block(self):
         sha = hasher.sha256()
-        seq = (str(x) for x in (
-               self.index, self.timestamp, self.data, self.previous_hash))
-        sha.update(''.join(seq).encode('utf-8'))
+        sha.update((str(self.index) +
+        str(self.timestamp) + 
+        str(self.data)+
+        str(self.previous_hash)).encode())
         return sha.hexdigest()
